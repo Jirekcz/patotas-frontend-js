@@ -3,7 +3,7 @@
     -> document.addEventListerner('DOMContentLoaded', {});
     -> <script type="module" src="js/inicio.js" defer></script>
 */
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
     
     // Referencias controles del formulario
     const tipoDocumento = document.getElementById('tipoDocumento')
@@ -68,6 +68,9 @@ async function autenticar() {
         if(result.codigo === '00') {
             // stringify() para convertir de objeto a JSON
             localStorage.setItem('result', JSON.stringify(result))
+            // Guardar el tipo y numero de documento
+            localStorage.setItem('datos', JSON.stringify(request))
+            
             // replace() para desactivar la navegacion
             window.location.replace('principal.html')
         } else {
